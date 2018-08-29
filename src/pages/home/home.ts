@@ -2,7 +2,13 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import { Store } from '@ngrx/store';
-import { State, AddingUsersSuccess, getAllUsers } from '../../store';
+import {
+  State,
+  AddingUsers,
+  getAllUsers,
+  DeletingUser,
+  DeletingAllUsers
+} from '../../store';
 import { Observable } from 'rxjs/Observable';
 import { User } from '../../models/user';
 
@@ -20,12 +26,16 @@ export class HomePage {
 
   addUser(couter) {
     couter += 1;
-    const data: User = { id: 'id' + couter, name: 'name ' + couter };
-    this.store.dispatch(new AddingUsersSuccess([data]));
+    const users: User = { id: 'id' + couter, name: 'name ' + couter };
+    this.store.dispatch(new AddingUsers({ users: [users] }));
     this.counter = couter;
   }
 
   onDeleteUser(id: string) {
-    console.log(id);
+    this.store.dispatch(new DeletingUser({ id }));
+  }
+
+  deleteAll() {
+    this.store.dispatch(new DeletingAllUsers());
   }
 }

@@ -7,7 +7,11 @@
 </ion-header>
 
 <ion-content padding>
-  <div>counts : {{ (users$ |async).length }} </div>
+  <div>
+    <button color="danger" [disabled]="(users$ |async).length === 0" ion-button icon outline (click)="deleteAll()">
+      {{ (users$ |async).length }}&nbsp;&nbsp;<ion-icon name="trash"></ion-icon>
+    </button>
+  </div>
   <button ion-button full (click)="addUser(counter)">Add User</button>
   <div *ngFor="let user of users$ |async">
     <user (deleteUser)="onDeleteUser(user.id)" [user]="user"></user>

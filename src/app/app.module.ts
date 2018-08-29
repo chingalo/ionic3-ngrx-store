@@ -9,11 +9,13 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { reducers, metaReducers } from '../store/reducers';
+import { ComponentsModule } from '../components/components.module';
 
 @NgModule({
   declarations: [MyApp, HomePage],
   imports: [
     BrowserModule,
+    ComponentsModule,
     IonicModule.forRoot(MyApp),
     StoreModule.forRoot(reducers, { metaReducers }),
     StoreDevtoolsModule.instrument({

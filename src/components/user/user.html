@@ -1,0 +1,17 @@
+<div class="user-container" padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <div>
+          <div>id : {{ user?.id}} </div>
+          <div>name : {{ user?.name}} </div>
+        </div>
+      </ion-col>
+      <ion-col col-auto>
+        <button ion-button icon clear (click)="delete()">
+          <ion-icon name="trash" color="danger"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>
